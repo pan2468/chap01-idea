@@ -1,20 +1,45 @@
 package chap02;
 
 public class PasswordStrengthMeter {
-    public PasswordStrength meter(String s){
-        if(s.length() < 8){
+//    public PasswordStrength meter(String s){
+//        if(s.length() < 8){
+//            return PasswordStrength.NORMAL;
+//        }
+//
+//        boolean containsNum = false;
+//        for(char ch : s.toCharArray()){
+//            if(ch >= '0' && ch <= '9'){
+//                containsNum = true;
+//                break;
+//            }
+//        }
+//        if(!containsNum) return PasswordStrength.NORMAL;
+//
+//        return PasswordStrength.STRONG;
+//    }
+
+    public PasswordStrength meter(String s) {
+        if (s == null || s.isEmpty()) return PasswordStrength.INVALID;
+        if (s.length() < 8) {
             return PasswordStrength.NORMAL;
         }
+        boolean containsNum = meetsContainingNumberCriteria(s);
+        if (!containsNum) return PasswordStrength.NORMAL;
+        return PasswordStrength.STRONG;
 
-        boolean containsNum = false;
-        for(char ch : s.toCharArray()){
-            if(ch >= '0' && ch <= '9'){
-                containsNum = true;
-                break;
+    }
+
+
+    private boolean meetsContainingNumberCriteria(String s) {
+        for (char ch : s.toCharArray()) {
+            if (ch >= '0' && ch <= '9') {
+                return true;
             }
         }
-        if(!containsNum) return PasswordStrength.NORMAL;
-
-        return PasswordStrength.STRONG;
+        return false;
     }
+
+
+
+
 }
