@@ -1,6 +1,7 @@
 package chap02;
 
 import org.junit.jupiter.api.Test;
+import sun.security.util.Password;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,11 +29,11 @@ class PasswordStrengthMeterTest {
         assertEquals(expStr, result);
     }
 
-    @Test
-    void meetsAllCriteria_Then_Strong(){
-        assertStrength("ab12!@AB",PasswordStrength.STRONG);
-        assertStrength("abc1!Add",PasswordStrength.STRONG);
-    }
+//    @Test
+//    void meetsAllCriteria_Then_Strong(){
+//        assertStrength("ab12!@AB",PasswordStrength.STRONG);
+//        assertStrength("abc1!Add",PasswordStrength.STRONG);
+//    }
 
 //    @Test
 //    void name(){
@@ -95,5 +96,39 @@ class PasswordStrengthMeterTest {
     @Test
     void meetsNoCriteria_Then_Weak(){
         assertStrength("abc",PasswordStrength.WEAK);
+    }
+
+    @Test
+    void meetsOnlyUpperCreteria_Then_Weak(){
+        PasswordStrengthMeter meter = new PasswordStrengthMeter();
+        PasswordStrength result = meter.meter("abcDef");
+        assertEquals(PasswordStrength.WEAK,result);
+    }
+
+    @Test
+    void meetsAllCriteria_Then_Weak(){
+        PasswordStrengthMeter meter = new PasswordStrengthMeter();
+        PasswordStrength result = meter.meter("abcDef12");
+        assertEquals(PasswordStrength.STRONG,result);
+        PasswordStrength result2 = meter.meter("aZcDef12");
+        assertEquals(PasswordStrength.STRONG,result2);
+    }
+
+    @Test
+    void meetsAllCriteria_Then_Strong(){
+        PasswordStrengthMeter meter = new PasswordStrengthMeter();
+        PasswordStrength result = meter.meter("ab12!@AB");
+        assertEquals(PasswordStrength.STRONG,result);
+        PasswordStrength result2 = meter.meter("abc1!Add");
+        assertEquals(PasswordStrength.STRONG,result2);
+    }
+
+    @Test
+    void meetsOtherCreteria_except_for_Length_Then_Normal(){
+        PasswordStrengthMeter meter = new PasswordStrengthMeter();
+        PasswordStrength result = meter.meter("ab12!@A");
+        assertEquals(PasswordStrength.NORMAL,result);
+        PasswordStrength result2 = meter.meter("Ab12!c");
+        assertEquals(PasswordStrength.NORMAL,result2);
     }
 }
