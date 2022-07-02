@@ -53,6 +53,6 @@ public class SumTest {
         return billingDate.plusMonths(1);
     }
 ```
-+ calculateExpiryDate 메소드를 통해서 값 
++ calculateExpiryDate 메소드를 통해서 값  
 
 
