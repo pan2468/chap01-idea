@@ -18,6 +18,7 @@
 + JUnit 빈티지(Vintage): JUnit 3과 4로 작성된 테스트를 Junit5 플랫폼에서 실행하기 위한 모듈로 제공한다.
 
 ### @Test 애노테이션 과 테스트 메소드
+****
 ```
 import org.junit.jupiter.api.Test;
 
