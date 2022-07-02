@@ -36,6 +36,7 @@ public class SumTest {
 + @Test 애노테이션 붙인 메소드는 <strong>private</strong>이면 안된다.
 
 ### JUnit Assertions클래스의 assertEquals() 메소드 값 검증하기
+****
 ```
     @Test
     void one_month_verification(){
