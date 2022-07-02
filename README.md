@@ -34,3 +34,25 @@ public class SumTest {
 ```
 + @Test 애노테이션 붙인 메소드는 private이면 안된다.
 
+### JUnit Assertions클래스의 assertEquals() 메소드 값 검증하기
+```
+    @Test
+    void one_month_verification(){
+        LocalDate billingDate = LocalDate.of(2019,3,1);
+        int payAmount = 10_000;
+
+        ExpiryDateCalculator cal = new ExpiryDateCalculator();
+        LocalDate expiryDate = cal.calculateExpiryDate(billingDate,payAmount);
+
+        assertEquals(LocalDate.of(2019,4,1),expiryDate);
+    }
+```
+```
+ public LocalDate calculateExpiryDate(LocalDate billingDate, int payAmount){
+       // return LocalDate.of(2019,4,1);
+        return billingDate.plusMonths(1);
+    }
+```
+
+
+
