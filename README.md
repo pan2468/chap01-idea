@@ -32,7 +32,7 @@ public class SumTest {
     }
 }
 ```
-+ @Test 애노테이션 붙인 메소드는 private이면 안된다.
++ @Test 애노테이션 붙인 메소드는 <strong>private</strong>이면 안된다.
 
 ### JUnit Assertions클래스의 assertEquals() 메소드 값 검증하기
 ```
@@ -53,6 +53,6 @@ public class SumTest {
         return billingDate.plusMonths(1);
     }
 ```
-+ calculateExpiryDate 메소드를 통해서 값  
++ <strong>calculateExpiryDate</strong> 메소드를 통해서 값  
 
 
