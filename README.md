@@ -32,3 +32,5 @@ public class SumTest {
     }
 }
 ```
++ @Test 애노테이션 붙인 메소드는 private이면 안된다.
+
