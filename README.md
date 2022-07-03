@@ -13,11 +13,11 @@
 + 테스트 기능 구현 통해서 소스코드는 사용자가 쉽게 이해할 수 있도록 구현됨 
 
 ### 👉 JUnit 5
-+ JUnit 플랫폼: 테스팅 프레임워크를 구동하기 위한 런처와 테스트 엔진을 위한 API를 제공한다. 
++ JUnit 플랫폼: 테스팅 프레임워크를 구동하기 위한 런처와 테스트 엔진을 위한 <strong>API</strong>를 제공한다. 
 + JUnit 주피티(Jupiter): JUnit5를 위한 테스트 API와 실행 엔진을 제공한다.
 + JUnit 빈티지(Vintage): JUnit 3과 4로 작성된 테스트를 Junit5 플랫폼에서 실행하기 위한 모듈로 제공한다.
 
-### @Test 애노테이션 과 테스트 메소드
+### 👉 @Test 애노테이션 과 테스트 메소드
 ```
 import org.junit.jupiter.api.Test;
 
@@ -32,5 +32,61 @@ public class SumTest {
     }
 }
 ```
-+ @Test 애노테이션 붙인 메소드는 private이면 안된다.
++ @Test 애노테이션 붙인 메소드는 <strong>private</strong>이면 안된다.
+
+### 👉 JUnit Assertions클래스의 assertEquals() 메소드 값 검증하기
+```
+    @Test
+    void one_month_verification(){
+        LocalDate billingDate = LocalDate.of(2019,3,1);
+        int payAmount = 10_000;
+
+        ExpiryDateCalculator cal = new ExpiryDateCalculator();
+        LocalDate expiryDate = cal.calculateExpiryDate(billingDate,payAmount);
+
+        assertEquals(LocalDate.of(2019,4,1),expiryDate);
+    }
+```
+```
+ public LocalDate calculateExpiryDate(LocalDate billingDate, int payAmount){
+       // return LocalDate.of(2019,4,1);
+        return billingDate.plusMonths(1);
+    }
+```
++ <strong>calculateExpiryDate</strong> 메소드를 통해서 값  
+### 👉 @BeforeAll 애노테이션과 @AfterAll 애노테이션
+```
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class LifecycleTest {
+    public LifecycleTest(){
+        System.out.println("new LifecycleTest");
+    }
+
+    @BeforeEach
+    void setUp(){
+        System.out.println("setUp");
+    }
+
+    @Test
+    void a(){
+        System.out.println("A");
+    }
+
+    @Test
+    void b(){
+        System.out.println("B");
+    }
+
+    @AfterEach
+    void tearDown(){
+        System.out.println("tearDown");
+    }
+}
+
+```
++ @BeforeEach 애노테이션과 @AfterEach 애노테이션 붙인 메서드는 @Test 애노테이션과 마찬가지로 <strong>private</strong>이면 안된다.
+
 
