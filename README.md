@@ -88,5 +88,42 @@ public class LifecycleTest {
 
 ```
 + @BeforeEach 애노테이션과 @AfterEach 애노테이션 붙인 메서드는 @Test 애노테이션과 마찬가지로 <strong>private</strong>이면 안된다.
+### @DisplayName, @Disabled
+```
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+@DisplayName("@DisplayName")
+public class DisplayNameTest {
+
+    @DisplayName("값 같은지 비교")
+    @Test
+    void assertEqualsMethod(){
+
+    }
+
+    @Disabled
+    @Test
+    void failMethod(){
+        System.out.println("테스트 실행 중지");
+    }
+
+    @DisplayName("익셉션 발생 여부 테스트")
+    @Test
+    void assertThrowsTest(){
+
+    }
+
+    @Test
+    void assertAllTest(){
+
+    }
+}
+
+```
++ @DisplayName() 실행해서 사용하면 테스트에 표시 이름을 붙일 수 있다. 
++ @Disabled() 애노테이션은 잠시동안 실행에서 제외시킨다.
+
 
 
