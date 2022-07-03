@@ -54,5 +54,39 @@ public class SumTest {
     }
 ```
 + <strong>calculateExpiryDate</strong> 메소드를 통해서 값  
+### @BeforeAll 애노테이션과 @AfterAll 애노테이션
+```
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class LifecycleTest {
+    public LifecycleTest(){
+        System.out.println("new LifecycleTest");
+    }
+
+    @BeforeEach
+    void setUp(){
+        System.out.println("setUp");
+    }
+
+    @Test
+    void a(){
+        System.out.println("A");
+    }
+
+    @Test
+    void b(){
+        System.out.println("B");
+    }
+
+    @AfterEach
+    void tearDown(){
+        System.out.println("tearDown");
+    }
+}
+
+```
++ @BeforeEach 애노테이션과 @AfterEach 애노테이션 붙인 메서드는 @Test 애노테이션과 마찬가지로 <strong>private</strong>이면 안된다.
 
 
