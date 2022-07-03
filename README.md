@@ -88,7 +88,7 @@ public class LifecycleTest {
 
 ```
 + @BeforeEach 애노테이션과 @AfterEach 애노테이션 붙인 메서드는 @Test 애노테이션과 마찬가지로 <strong>private</strong>이면 안된다.
-### @DisplayName, @Disabled
+### 👉 @DisplayName, @Disabled
 ```
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
