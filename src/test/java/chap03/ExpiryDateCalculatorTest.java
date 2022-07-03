@@ -37,13 +37,18 @@ public class ExpiryDateCalculatorTest {
         assertEquals(expectedExpiryDate,realExpiryDate);
     }
 
-//    @Test
-//    void 납부일과_한달_뒤_일자가_같지_않음(){
-//        assertExpiryDate(LocalDate.of(2019,1,31),10_000,LocalDate.of(2019,2,28));
-//        assertExpiryDate(LocalDate.of(2019, 5,31),10_000,LocalDate.of(2019,6,30));
-//        assertExpiryDate(LocalDate.of(2020,1,31),10_000,LocalDate.of(2020,2,29));
-//    }
 
+
+    @Test
+    void one_month_verification(){
+        LocalDate billingDate = LocalDate.of(2019,3,1);
+        int payAmount = 10_000;
+
+        ExpiryDateCalculator cal = new ExpiryDateCalculator();
+        LocalDate expiryDate = cal.calculateExpiryDate(billingDate,payAmount);
+
+        assertEquals(LocalDate.of(2019,4,1),expiryDate);
+    }
 
 
 }
