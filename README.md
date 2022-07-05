@@ -130,3 +130,4 @@ public class DisplayNameTest {
 + 브라우저에서 실행되는 자바스크립트 코드, HTML과 CSS 등이 정상 동작해야 한다. DB의 테이블도 올바르게 생성되어 있어야 한다.
 
 
+
